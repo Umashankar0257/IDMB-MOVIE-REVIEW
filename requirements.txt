@@ -1,6 +1,6 @@
-streamlit>=1.30.0
-protobuf<4.0.0
-numpy
+streamlit==1.54.0
+tensorflow==2.14.0
+keras==2.14.0
+numpy==1.26.4
 pandas
 scikit-learn
-tensorflow
