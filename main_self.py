@@ -44,15 +44,15 @@ def preprocess_text(text):
 
 
 ### Prediction  function
+MAX_WORDS = 1000
+MAX_LEN = 500
 
-def predict_sentiment(review):
-    preprocessed_input=preprocess_text(review)
+sequence = tokenizer.texts_to_sequences([user_input])
+sequence = [[min(word, MAX_WORDS - 1) for word in seq] for seq in sequence]
+preprocessed_input = pad_sequences(sequence, maxlen=MAX_LEN)
 
-    prediction=model.predict(preprocessed_input)
-
-    sentiment = 'Positive' if prediction[0][0] > 0.5 else 'Negative'
-    
-    return sentiment, prediction[0][0]
+prediction = model.predict(preprocessed_input)
+sentiment = "Positive" if prediction[0][0] > 0.5 else "Negative"
 
 
 ## streamlit app
@@ -76,3 +76,4 @@ if st.button('Classify'):
     st.write(f'Prediction Score: {prediction[0][0]}')
 else:
     st.write('Please enter a movie review.')
+
