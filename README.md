@@ -1,1 +1,1 @@
-# IDMB-MOVIE-REVIEW
+# movie-review-app
